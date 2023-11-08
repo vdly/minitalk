@@ -6,24 +6,38 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:39:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/06 17:33:30 by johii            ###   ########.fr       */
+/*   Updated: 2023/11/08 20:53:03 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <signal.h>
 
-void	bits_sender(char c)
+void	send_str(pid_t pid, char *str)
 {
-	int		i;
-	char	bit_holder;
+	int	i;
 
 	i = 0;
-	while (i < 8)
+	while (str[i])
 	{
-		holder = (c >> (7 - i)) & 1;
-		holder = holder + 48;
-		write(1, &holder, 1);
+		send_char(pid, str[i]);
 		i++;
 	}
-	write(1, "/n", 1);
+	send_char(pid, '\0');
+}
+
+void	send_char(pid_t pid, char c)
+{
+	int		bit_pos;
+	char	bit_holder;
+
+	bit_pos = 0;
+	while (i < 8)
+	{
+		bit_holder = (c >> (7 - bit_pos)) & 1;
+		if (bit_holder == 0)
+			kill(pid, SIGUSR2);
+		else
+			kill(pid, SIGUSR1);
+		i++;
+	}
 }
