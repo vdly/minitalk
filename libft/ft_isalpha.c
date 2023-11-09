@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:38:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/09 20:51:57 by johii            ###   ########.fr       */
+/*   Created: 2023/05/01 12:26:14 by johii             #+#    #+#             */
+/*   Updated: 2023/05/09 14:42:29 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/ft_printf/ft_printf.h"
-#include "libft/libft.h"
-#include <signal.h>
+#include "libft.h"
 
-
+int	ft_isalpha(int x)
+{
+	return ((x >= 65 && x <= 90) || (x >= 97 && x <= 122));
+}
+/*
+int	main(void)
+{
+	printf("%d", ft_isalpha('a'));
+}*/

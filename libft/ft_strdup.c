@@ -1,17 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:38:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/09 20:51:57 by johii            ###   ########.fr       */
+/*   Created: 2023/05/16 15:27:22 by johii             #+#    #+#             */
+/*   Updated: 2023/05/25 16:46:25 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/ft_printf/ft_printf.h"
-#include "libft/libft.h"
-#include <signal.h>
+#include "libft.h"
 
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	int		len;
+	char	*s2;
 
+	i = 0;
+	len = ft_strlen(s1);
+	s2 = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s2)
+		return (0);
+	while (s1[i])
+	{
+		s2[i] = s1[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
+}

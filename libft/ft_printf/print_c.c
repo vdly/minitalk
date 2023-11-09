@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   print_c.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:38:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/09 20:51:57 by johii            ###   ########.fr       */
+/*   Created: 2023/07/08 16:07:15 by johii             #+#    #+#             */
+/*   Updated: 2023/07/12 12:14:45 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/ft_printf/ft_printf.h"
-#include "libft/libft.h"
-#include <signal.h>
+#include "ft_printf.h"
 
-
+int	print_c(int c)
+{
+	return (write(1, &c, 1));
+}

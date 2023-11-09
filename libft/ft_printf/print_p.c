@@ -1,17 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:38:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/09 20:51:57 by johii            ###   ########.fr       */
+/*   Created: 2023/07/13 14:34:47 by johii             #+#    #+#             */
+/*   Updated: 2023/07/13 15:20:33 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/ft_printf/ft_printf.h"
-#include "libft/libft.h"
-#include <signal.h>
+#include "ft_printf.h"
 
+int	print_p(uintptr_t n)
+{
+	int		len;
+	char	*symbols;
 
+	symbols = "0123456789abcdef";
+	if (n < 16)
+		return (print_c(symbols[n]));
+	else
+	{
+		len = print_p(n / 16);
+		return (len + print_p(n % 16));
+	}
+}

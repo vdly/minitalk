@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:38:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/09 20:51:57 by johii            ###   ########.fr       */
+/*   Created: 2023/05/22 15:11:35 by johii             #+#    #+#             */
+/*   Updated: 2023/05/22 15:16:09 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/ft_printf/ft_printf.h"
-#include "libft/libft.h"
-#include <signal.h>
+#include "libft.h"
 
-
+void	ft_putchar_fd(char c, int fd)
+{
+	write (fd, &c, 1);
+}
