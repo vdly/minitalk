@@ -6,42 +6,38 @@
 #    By: johii <johii@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 19:20:01 by johii             #+#    #+#              #
-#    Updated: 2023/11/09 20:53:07 by johii            ###   ########.fr        #
+#    Updated: 2023/11/13 20:09:00 by johii            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# replace makefile w your own :O plzzzz
+SERVER	=	server
+CLIENT	=	client
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-src = server client
-PRINTFDIR = ./libft/ft_printf
-LIBFTDIR = ./libft
+SFILE	=	server.c
+CFILE	=	client.c
 
-all: $(src)
+LIBFT	=	libft/*.c
+PRINTF	=	libft/ft_printf/*.c
 
-server: server.c $(LIBFTDIR)/libft.a
-	$(CC) $(CFLAGS) $< -I $(PRINTFDIR) -I $(LIBFTDIR) -L$(LIBFTDIR) -lft -o $@
+FLAGS	=	-Wall -Werror -Wextra
+RM		=	rm -rf
 
-client: client.c $(LIBFTDIR)/libft.a
-	$(CC) $(CFLAGS) $< -I $(PRINTFDIR) -I $(LIBFTDIR) -L$(LIBFTDIR) -lft -o $@
+all		:	$(CLIENT) $(SERVER)
 
-$(LIBFTDIR)/libft.a: $(PRINTFDIR)/libftprintf.a
-	@make -C $(LIBFTDIR)
+$(SERVER)	:
+			gcc $(SFILE) $(LIBFT) $(PRINTF) -o $(SERVER)
 
-$(PRINTFDIR)/libftprintf.a:
-	@make -C $(PRINTFDIR)
-	@cp $(PRINTFDIR)/libftprintf.a $(LIBFTDIR)/libft.a
+$(CLIENT)	:
+			gcc $(CFILE) $(LIBFT) $(PRINTF) -o $(CLIENT)
 
-clean:
-	@make clean -C $(LIBFTDIR)
-	@make clean -C $(PRINTFDIR)
+clean	:
+#			$(RM) *.o
+			$(RM) libft/*.o
+			$(RM) libft/ft_printf/*.o
+            
+fclean	:	clean
+				$(RM) $(CLIENT) $(SERVER)
+            
+re		:	fclean all
 
-fclean: clean
-	@make fclean -C $(LIBFTDIR)
-	@make fclean -C $(PRINTFDIR)
-	@rm -rf $(src)
-
-re: fclean all
-
-.PHONY: server client all fclean clean re
+.PHONY	:	all clean fclean re

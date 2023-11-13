@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   client.c                                           :+:      :+:    :+:   */
+/*   client_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 16:39:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/13 21:11:08 by johii            ###   ########.fr       */
+/*   Created: 2023/11/13 19:24:19 by johii             #+#    #+#             */
+/*   Updated: 2023/11/13 20:17:36 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,15 @@ int	pid_check(char *if_pid)
 	return (1);
 }
 
+void	signal_handler(int signo)
+{
+	if (signo == SIGUSR1)
+		ft_printf("\n°•. ✿ .•°sent!!°•. ✿ .•°\n\n");
+}
+
 int	main(int argc, char **argv)
 {
+	signal(SIGUSR1, signal_handler);
 	if (argc == 3 && pid_check(argv[1]))
 	{
 		str_send(ft_atoi(argv[1]), "٩(ˊᗜˋ*)و♡ new message! ♡٩(ˊᗜˋ*)و :");
@@ -75,4 +82,3 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
-
