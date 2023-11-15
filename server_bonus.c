@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 20:19:40 by johii             #+#    #+#             */
-/*   Updated: 2023/11/14 16:04:17 by johii            ###   ########.fr       */
+/*   Updated: 2023/11/15 18:02:42 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	sig_handler(int signo, siginfo_t *info, void *context)
 	{
 		if (bit_holder == '\0')
 		{
-			kill(info->si_pid, SIGUSR1);//
+			kill(info->si_pid, SIGUSR1);
 			ft_printf("\n");
 		}
 		else
@@ -41,7 +41,7 @@ void	sig_handler(int signo, siginfo_t *info, void *context)
 void	miniheader(int num)
 {
 	ft_printf("\n˚₊‧꒰ა ☆ ໒꒱ ‧₊˚˚₊‧꒰ა ☆ ໒꒱ ‧₊˚˚₊‧꒰ა ☆ ໒꒱ ‧₊˚\n");
-	ft_printf("	mini mini mintalk\n");
+	ft_printf("		mini mini mintalk\n");
 	ft_printf("˚₊‧꒰ა ☆ ໒꒱ ‧₊˚˚₊‧꒰ა ☆ ໒꒱ ‧₊˚˚₊‧꒰ა ☆ ໒꒱ ‧₊˚\n");
 	ft_printf("server pid : %d\n\n", num);
 }
@@ -50,9 +50,9 @@ int	main(void)
 {
 	struct sigaction	my_sig;
 
-	pid(getpid());
+	miniheader(getpid());
 	my_sig.sa_sigaction = sig_handler;
-	sigemptyset(my_sig.sa_mask);
+	sigemptyset(&my_sig.sa_mask);
 	my_sig.sa_flags = SA_SIGINFO;
 	sigaction(SIGUSR1, &my_sig, 0);
 	sigaction(SIGUSR2, &my_sig, 0);
@@ -60,4 +60,3 @@ int	main(void)
 		pause();
 	return (0);
 }
-

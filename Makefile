@@ -6,38 +6,49 @@
 #    By: johii <johii@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 19:20:01 by johii             #+#    #+#              #
-#    Updated: 2023/11/13 20:09:00 by johii            ###   ########.fr        #
+#    Updated: 2023/11/15 18:08:42 by johii            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SERVER	=	server
-CLIENT	=	client
+SERVER		=	server
+CLIENT		=	client
+SERVERB		=	server_bonus
+CLIENTB		=	client_bonus
 
-SFILE	=	server.c
-CFILE	=	client.c
+SFILE		=	server.c
+CFILE		=	client.c
+SBFILE		=	server_bonus.c
+CBFILE		=	client_bonus.c
 
-LIBFT	=	libft/*.c
-PRINTF	=	libft/ft_printf/*.c
+LIBFT		=	libft/*.c
+PRINTF		=	libft/ft_printf/*.c
 
-FLAGS	=	-Wall -Werror -Wextra
-RM		=	rm -rf
+FLAGS		=	-Wall -Werror -Wextra
+RM			=	rm -rf
 
-all		:	$(CLIENT) $(SERVER)
+all			:	$(CLIENT) $(SERVER) $(CLIENTB) $(SERVERB)
+
+bonus		:	$(CLIENTB) $(SERVERB)
 
 $(SERVER)	:
-			gcc $(SFILE) $(LIBFT) $(PRINTF) -o $(SERVER)
+				gcc $(SFILE) $(LIBFT) $(PRINTF) -o $(SERVER)
 
 $(CLIENT)	:
-			gcc $(CFILE) $(LIBFT) $(PRINTF) -o $(CLIENT)
+				gcc $(CFILE) $(LIBFT) $(PRINTF) -o $(CLIENT)
 
-clean	:
-#			$(RM) *.o
-			$(RM) libft/*.o
-			$(RM) libft/ft_printf/*.o
-            
-fclean	:	clean
-				$(RM) $(CLIENT) $(SERVER)
-            
-re		:	fclean all
+$(SERVERB)	:
+				gcc $(SBFILE) $(LIBFT) $(PRINTF) -o $(SERVERB)
 
-.PHONY	:	all clean fclean re
+$(CLIENTB)	:
+				gcc $(CBFILE) $(LIBFT) $(PRINTF) -o $(CLIENTB)
+
+clean		:
+				$(RM) libft/*.o
+				$(RM) libft/ft_printf/*.o
+            
+fclean		:	clean
+				$(RM) $(CLIENT) $(SERVER) $(CLIENTB) $(SERVERB)
+            
+re			:	fclean all
+
+.PHONY		:	all bonus clean fclean re
