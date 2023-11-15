@@ -6,7 +6,7 @@
 /*   By: johii <johii@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 16:38:46 by johii             #+#    #+#             */
-/*   Updated: 2023/11/15 17:51:42 by johii            ###   ########.fr       */
+/*   Updated: 2023/11/15 19:11:03 by johii            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	sig_handler(int signo, siginfo_t *info, void *context)
 	static char	bit_holder;
 
 	(void)context;
+	(void)info;
 	bit_pos++;
 	bit_holder |= (signo == SIGUSR1);
 	if (bit_pos == 8)
